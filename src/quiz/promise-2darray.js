@@ -1,7 +1,13 @@
+// any function that returns a promise will run async
+// when execution of async function completes, resolve the promise - pending to fufilled and triggers then block
+// if error, triggers catch block
+// when we want function to be async, we have to return a promise from it
+// Console.logs occur synchronously in main thread
+
 function sum2DArray(arr) {
     return new Promise((resolve, reject) => {
         console.log('Sum called ... ');
-        if(Array.isArray(arr)) {
+        if(Array.isArray(arr)) { // executes async in worker thread
             setTimeout(() => {
                 let sum = 0;
                 for (let i = 0; i < arr.length; i++) {
@@ -29,7 +35,11 @@ const array2D = [
 ];
 
 const sumPromise1 = sum2DArray(array2D);
-console.log(sumPromise1);
+sumPromise1
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
 
 const sumPromise2 = sum2DArray('array2D');
-console.log(sumPromise2);
+sumPromise2
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err))
