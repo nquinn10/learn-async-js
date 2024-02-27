@@ -7,7 +7,8 @@ const fetchPromise1 = fetch(
   const fetchPromise3 = fetch(
     "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json",
   );
-  
+  // promises dont have dependencies between them so we can run concurrently with promise.all
+// if there is an issue with one, none execute
   Promise.all([fetchPromise1, fetchPromise2, fetchPromise3])
     .then((responses) => {
       for (const response of responses) {
