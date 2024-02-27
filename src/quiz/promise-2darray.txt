@@ -1,1 +1,21 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+Explain why we see order of messages in the way they are logged on to the console
+
+Sum called ...
+- called when sum2DArray is called for the first time with array2D
+returning from sum
+- logged after checking if input arr is an array or not
+- logged regardless of whether input is valid
+Sum called ...
+- logged when sum2DArray is called for the second time with string instead of array
+rejecting ...
+- logged because input is not an array
+returning from sum
+- logged after checking whether the input arr is an array or not
+BAD INPUT: Expected array as input
+- logged as a result of the catch block being triggered for sumPromise2
+resolving ...
+- logged after async operation of summing array2D in first call is completed
+45
+- logs sum of array2D from first call
+- then block in sumPromise1
