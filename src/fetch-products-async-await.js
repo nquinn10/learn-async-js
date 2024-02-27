@@ -1,3 +1,5 @@
+// embed fetch within async keyword
+//cannot have await without async
 async function fetchProducts() {
     console.log('Begin fetch ... ');
         // after this line, our function will wait for the `fetch()` call to be settled
@@ -5,13 +7,13 @@ async function fetchProducts() {
     const response = await fetch(
         "https://mdn.github.io/learning-area/javascript/apis/fetching-data/can-store/products.json",
     );
-    console.log('Fetch done');
+    console.log('Fetch done'); // check response
     if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
     }
     // after this line, our function will wait for the `response.json()` call to be settled
     // the `response.json()` call will either return the parsed JSON object or throw an error
-    const data = await response.json();
+    const data = await response.json(); // runs async but looks like synchronous code
     console.log('response created');
     return data[0].name;
   }
