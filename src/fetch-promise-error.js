@@ -1,6 +1,9 @@
 const fetchPromise = fetch(
     "https://mdn.github.io/learningarea/javascript/apis/fetching-data/can-store/products.json",
   );
+
+// bad URL used
+// use catch statements to chat errors
   
   fetchPromise
     .then((response) => {
