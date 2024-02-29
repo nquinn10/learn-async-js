@@ -24,7 +24,7 @@ const aliceTumbling = [
           console.log(`Error when animating: ${err.message}`);
       }
   }
-
+animate().then((status) => console.log(status));
   // Promise chain  
   // alice1.animate(aliceTumbling, aliceTiming).finished  
   //   .then(() => {
