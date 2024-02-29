@@ -8,24 +8,22 @@ const aliceTumbling = [
     iterations: 1,
     fill: 'forwards'
   }
-  
+
+  //extracting images using DOM api
   const alice1 = document.querySelector("#alice1");
   const alice2 = document.querySelector("#alice2");
   const alice3 = document.querySelector("#alice3");
 
-  alice1
-    .animate(aliceTumbling, aliceTiming)
-    .finished
-    .then((res) => {
-        console.log(res);
-        alice2
-            .animate(aliceTumbling, aliceTiming)
-            .finished
-            .then((res) => {
-                console.log(res);
-                alice3.animate(aliceTumbling, aliceTiming);
-            })
-    });
+  async function animate() {
+      try {
+          await alice1.animate(aliceTumbling, aliceTiming).finished;
+          await alice2.animate(aliceTumbling, aliceTiming).finished;
+          await alice3.animate(aliceTumbling, aliceTiming).finished;
+
+      } catch (err) {
+          console.log(`Error when animating: ${err.message}`);
+      }
+  }
 
   // Promise chain  
   // alice1.animate(aliceTumbling, aliceTiming).finished  
